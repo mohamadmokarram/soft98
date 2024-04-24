@@ -1492,8 +1492,8 @@ div.onload {
     position: relative;
     transition: all 0.5s;
     font-family: iransans;
-    width: 0;
-    height: 0;
+    width: 50vw;
+    height: max-content;
     background-color: rgb(243, 240, 240);
     border-radius: 10px;;
 }
@@ -1517,7 +1517,7 @@ div.onload {
     margin-top: 20px;
     font-family: iransans;
     transition: all 0.3s;
-    cursor: pointer;
+    margin-bottom: 10%;  
 }
 
 .onload button.accept:hover {
@@ -1530,10 +1530,25 @@ div.onload {
 }
 
 .showmessage {
-    width: 45% !important;
-    height: 42% !important;
+    width: 45%;
+    height: 42%;
 }
 
 .show-para-inmessage{
     display: block !important;
+}
+
+@media screen and (max-width: 400px){
+    .onload .message {
+        width: 85vw;
+        height: max-content;
+    }
+}
+
+@media screen and (min-width: 401px) and (max-width: 900px){
+    .onload .message {
+        width: 60vw;
+        height: max-content;
+        margin-bottom: 50%;
+    }
 }
