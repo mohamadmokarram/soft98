@@ -1,4 +1,3 @@
-//این تابع از ابتدا زده نشده و تقریبا با اتمام پروژه به کدها اضافه شده
 let $ = selector => {
   return document.querySelector(selector);
 }
@@ -19,8 +18,8 @@ if(continueButton ){
     let styles = window.getComputedStyle(ultag);
   
     if (styles.maxHeight == "418px") {
-      ultag.classList.add("realheight");// اگر ارتفاع ۴۱۸ پیکسل بود سایز ارتفاع واقعی رو بهش اضافه کن
-      btnSpan.innerHTML = "expand_less";// تغییر آیکن با تغییر متن داخلیش
+      ultag.classList.add("realheight");
+      btnSpan.innerHTML = "expand_less";
     } else {
       ultag.classList.remove("realheight");
       btnSpan.innerHTML = "expand_more";
@@ -37,7 +36,6 @@ document.querySelector('#nav .row span.menusign').addEventListener('click', () =
 document.querySelector('#nav span.close').addEventListener('click' , () => {
   ul.classList.remove('openmenu');
 })
-// src با تغییر logo تغییر عکس
 // dark theme
 let logo = document.querySelector('.logo img');
 let moonIcon = document.querySelector('.moon-icon');
@@ -50,7 +48,7 @@ moonIcon.addEventListener('click', () => { //when click on moonicon
     logo.removeAttribute('src');
     logo.setAttribute('src','images/logo-2.png');
   }
-  // تغییر آیکن ماه با تغییر نام کلاس
+  
   if(moonIcon.firstElementChild.classList.contains('fa-moon-o')){
     moonIcon.firstElementChild.classList.replace('fa-moon-o','fa-sun-o');
   }else {
@@ -291,8 +289,6 @@ let softUl = document.querySelector('.soft-ul');
 //content    filtering
 
 //============================================================================
-//I created json file with factory function
-//making objects with factory function from each posts in main-content:
   function postInfoCollector(element) {
     return {
         title: element.firstElementChild.firstElementChild.innerText,
@@ -303,7 +299,6 @@ let softUl = document.querySelector('.soft-ul');
     }
 }
 
-// هست hr حواسمون باشه که باید فقط پست هارو انتخاب کنیم چون بعد هر پست
 let mainContentPosts = document.querySelectorAll('.main-content .post');
 
 let arrayOfPostObjects = [];
@@ -327,9 +322,6 @@ requestForJson.onload = function (){
   jsonFile = requestForJson.responseText;
 }
 requestForJson.send();
-
-
-// ذخیره شده jsonfile در متغیر json فایل
 
 
 //filtering original array based on condition:
