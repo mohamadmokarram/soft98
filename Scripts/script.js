@@ -417,7 +417,7 @@ function searchMyWord(array,word) {
   for(item of array){
   let includedTLC = (item.title + item.category + item.description).toLowerCase().includes(word.toLowerCase());
   let includedTUC = (item.title + item.category + item.description).toUpperCase().includes(word.toUpperCase());
-  if (includedTLC || includedTUC) {
+  if (includedTLC) {
     creatPostFromSearched([item]);
     continue;
     }
