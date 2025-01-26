@@ -4,7 +4,7 @@
 
 ![Image](https://github.com/user-attachments/assets/be1bc7d8-8d64-4016-9f58-f418b7fa7114)
 
-- [مشاهده دمو](https://pouria-farahani-developer.github.io/Accordion-Menu-By-React/)
+<p align="center">[مشاهده دمو](https://pouria-farahani-developer.github.io/Accordion-Menu-By-React/)</p>
 
 - Developed by Mohamad Mokarram
 
