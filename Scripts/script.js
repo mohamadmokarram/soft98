@@ -516,21 +516,21 @@ document.querySelector('div.ads').addEventListener('mouseleave', () => {
 //======================================================================
 //        onload message
 //======================================================================
-  window.addEventListener('load', () => {
+  // window.addEventListener('load', () => {
     //with sessionStorage , we can show the message just once until browser will close
-  if($('.onload') && sessionStorage.getItem('designer') === null){
-    $('.onload').classList.add('onloadbg');
-    $('.onload .message').classList.add('showmessage');
-    $('.onload .message p').classList.add('show-para-inmessage');
-    $('.onload .message button').classList.add('show-para-inmessage');
-    sessionStorage.setItem('designer', 'mokaram');
-  }  
+  // if($('.onload') && sessionStorage.getItem('designer') === null){
+  //   $('.onload').classList.add('onloadbg');
+  //   $('.onload .message').classList.add('showmessage');
+  //   $('.onload .message p').classList.add('show-para-inmessage');
+  //   $('.onload .message button').classList.add('show-para-inmessage');
+  //   sessionStorage.setItem('designer', 'mokaram');
+  // }  
 
-  $('.onload button').addEventListener('click', () => {
-    $('.onload').classList.remove('onloadbg');
-    $('.onload .message').classList.remove('showmessage');
-    $('.onload .message p').classList.remove('show-para-inmessage');
-    $('.onload .message button').classList.remove('show-para-inmessage');
-  })
-  });
+  // $('.onload button').addEventListener('click', () => {
+  //   $('.onload').classList.remove('onloadbg');
+  //   $('.onload .message').classList.remove('showmessage');
+  //   $('.onload .message p').classList.remove('show-para-inmessage');
+  //   $('.onload .message button').classList.remove('show-para-inmessage');
+  // })
+  // });
 
