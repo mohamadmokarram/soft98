@@ -4,7 +4,9 @@
 
 ![Image](https://github.com/user-attachments/assets/be1bc7d8-8d64-4016-9f58-f418b7fa7114)
 
-<p align="center">[مشاهده دمو](https://mohamadmokarram.github.io/soft98/)</p>
+<p align="center">
+  <a href="https://mohamadmokarram.github.io/soft98/">مشاهده دمو</a>
+</p>
 
 - Developed by Mohamad Mokarram
 
