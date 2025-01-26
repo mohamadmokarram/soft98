@@ -4,7 +4,7 @@
 
 ![Image](https://github.com/user-attachments/assets/be1bc7d8-8d64-4016-9f58-f418b7fa7114)
 
-**تم دارک پروژه🌚**
+<p align="center">dark theme :</p>
 
 ![Image](https://github.com/user-attachments/assets/7805f090-01c7-4757-927e-d70ec0997fca)
 
