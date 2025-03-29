@@ -1,1 +1,133 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* body {
+  background-color: black;
+} */
+
+@keyframes border-radius-change {
+  0% {
+    border-radius: 50% 50% 50% 50% / 50% 50% 50% 50%;
+    /* background: #aa4b6b; */
+  }
+  16.67% {
+    border-radius: 75% 25% 75% 25% / 75% 25% 75% 25%;
+    /* background: #fc6767; */
+  }
+  33.34% {
+    border-radius: 25% 75% 25% 75% / 25% 25% 75% 75%;
+    /* background: #3e5151; */
+  }
+  50.51% {
+    border-radius: 75% 25% 25% 75% / 75% 75% 25% 25%;
+    /* background: #22c1c3; */
+  }
+  66.68% {
+    border-radius: 25% 75% 75% 25% / 75% 25% 75% 25%;
+    /* background: #a5cc82; */
+  }
+  83.35% {
+    border-radius: 25% 75% 25% 75% / 25% 75% 25% 75%;
+    /* background: #2c3e50; */
+  }
+  100% {
+    border-radius: 50% 50% 50% 50% / 50% 50% 50% 50%;
+    /* background: #ffe259; */
+  }
+}
+
+.profile-container {
+  position: fixed;
+  bottom: 50px;
+  right: 50px;
+  background-color: #ffe259;
+  animation: border-radius-change 10s linear 0s infinite alternate both;
+
+  div.developer {
+    width: 20%;
+    height: 0%;
+    overflow: hidden;
+    color: white;
+    position: absolute;
+    top: 0;
+    right: -23px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: 0.8s;
+    line-height: 1.2;
+    > span {
+      text-shadow: 1px 1px 3px black;
+    }
+  }
+  &:hover {
+    .developer {
+      height: 115%;
+    }
+  }
+}
+
+figure#profile {
+  width: 150px;
+  height: 150px;
+  overflow: hidden;
+  cursor: pointer;
+  border-radius: 50%;
+  animation: border-radius-change 20s linear 0.5s infinite alternate both;
+
+  &:hover {
+    > img {
+      scale: 1.3;
+      transform: translateY(10px);
+    }
+    .profile-links {
+      opacity: 1;
+    }
+  }
+  > img {
+    transform-origin: bottom;
+    transition: 0.5s;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    scale: 1.2;
+  }
+  > .profile-links {
+    position: relative;
+    width: 50%;
+    height: 100%;
+    position: absolute;
+    left: -30px;
+    top: 0;
+    color: white;
+    opacity: 0;
+    transition: 0.5s;
+    a {
+      font-size: 1.5rem;
+      position: absolute;
+
+      transition: 0.5s;
+      &:hover {
+        scale: 1.5;
+      }
+      &:nth-of-type(1) {
+        left: 15px;
+        color: #c108a3;
+      }
+      &:nth-of-type(2) {
+        color: #086bca;
+        left: -4px;
+        top: 40%;
+      }
+      &:nth-of-type(3) {
+        left: 15px;
+        bottom: 0;
+      }
+    }
+  }
+}
 
