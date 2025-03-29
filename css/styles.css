@@ -1,11 +1,11 @@
 @font-face {
     font-family: iransans;
-    src: url(fonts/IRANSans-web.woff);
+    src: url(../fonts/IRANSans-web.woff);
     font-weight: normal;
 }
 @font-face {
     font-family: yekan;
-    src: url(fonts/yekan.woff);
+    src: url(../fonts/yekan.woff);
     font-weight: normal;
 }
 :root {
@@ -331,7 +331,7 @@ hr {
 }
 .toplist ul li a .icon-image i::before {
     content: '';
-    background: url(images/top-list.png);
+    background: url(../images/top-list.png);
     background-repeat: no-repeat;
     background-size: cover;
     display: block;
