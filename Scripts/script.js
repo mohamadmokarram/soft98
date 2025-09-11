@@ -2,8 +2,6 @@ import { DATA } from "../Jsons/data.js";
 const expandListArrowButton = document.querySelector("ul.apps button span");
 const expandButton = document.querySelector(".continue");
 
-console.log(expandButton);
-
 let $ = selector => {
   return document.querySelector(selector);
 };
@@ -35,43 +33,49 @@ if (expandButton) {
       expandListArrowButton.innerHTML = "expand_more";
       appsMenuIsOpen = !appsMenuIsOpen;
     }
-
-    // let styles = window.getComputedStyle(ultag);
-
-    // if (styles.maxHeight == "418px") {
-    //   ultag.classList.add("realheight");
-    //   expandListArrowButton.innerHTML = "expand_less";
-    // } else {
-    //   ultag.classList.remove("realheight");
-    //   expandListArrowButton.innerHTML = "expand_more";
-    // }
   };
 }
-let menuIcon = document.querySelector("#nav span.menusign");
+
+//
+
 let ul = document.querySelector("#nav ul.menu");
-let closeIcon = ul.lastElementChild;
-document
-  .querySelector("#nav .row span.menusign")
-  .addEventListener("click", () => {
-    ul.classList.add("openmenu");
-  });
+let hamburgerMenuIcon = document.querySelector("#nav span.menusign");
+let hamburgerCloseIcon = document.querySelector("#nav span.close");
+console.log(ul);
+
+hamburgerMenuIcon.addEventListener("click", () => {
+  ul.classList.add("openmenu");
+});
+
 // closing sidemenu
-document.querySelector("#nav span.close").addEventListener("click", () => {
+hamburgerCloseIcon.addEventListener("click", () => {
   ul.classList.remove("openmenu");
 });
+
 // dark theme
 let logo = document.querySelector(".logo img");
 let moonIcon = document.querySelector(".moon-icon");
+
+let isDarkTheme;
+
 moonIcon.addEventListener("click", () => {
-  //when click on moonicon
+  //when moonicon clicks
   document.body.classList.toggle("dark");
-  if (logo.getAttribute("src") === "images/logo-2.png") {
-    logo.removeAttribute("src");
-    logo.setAttribute("src", "images/logo-night.png");
+  isDarkTheme = document.body.classList.contains("dark");
+
+  if (isDarkTheme) {
+    logo.src = "images/logo-night.png";
   } else {
-    logo.removeAttribute("src");
-    logo.setAttribute("src", "images/logo-2.png");
+    logo.src = "images/logo-2.png";
   }
+
+  // if (logo.getAttribute("src") === "images/logo-2.png") {
+  //   logo.removeAttribute("src");
+  //   logo.setAttribute("src", "images/logo-night.png");
+  // } else {
+  //   logo.removeAttribute("src");
+  //   logo.setAttribute("src", "images/logo-2.png");
+  // }
 
   if (moonIcon.firstElementChild.classList.contains("fa-moon-o")) {
     moonIcon.firstElementChild.classList.replace("fa-moon-o", "fa-sun-o");
