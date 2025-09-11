@@ -3,9 +3,24 @@ const expandListArrowButton = document.querySelector("ul.apps button span");
 const expandButton = document.querySelector(".continue");
 const logo = document.querySelector(".logo img");
 const weatherIcon = document.querySelector(".moon-icon>i");
+const ul = document.querySelector("#nav ul.menu");
+const hamburgerMenuIcon = document.querySelector("#nav span.menusign");
+const hamburgerCloseIcon = document.querySelector("#nav span.close");
+const systemItem = document.querySelector(".system-item");
+const systemSubmenu = systemItem.querySelector(".submenu");
+const mobileItem = document.querySelector(".mobile-item");
+const mobileSubmenu = mobileItem.querySelector(".submenu");
+const softwareItem = document.querySelector(".software-item");
+const softwareSubmenu = softwareItem.querySelector(".submenu");
+const graphicItem = document.querySelector(".graphic-item");
+const graphicSubmenu = graphicItem.querySelector(".submenu");
 
 let $ = selector => {
   return document.querySelector(selector);
+};
+
+const toggleClasses = (element, ...classNames) => {
+  classNames.forEach(className => element.classList.toggle(className));
 };
 
 const toTop = document.querySelector(".totop");
@@ -40,10 +55,6 @@ if (expandButton) {
 
 //
 
-let ul = document.querySelector("#nav ul.menu");
-let hamburgerMenuIcon = document.querySelector("#nav span.menusign");
-let hamburgerCloseIcon = document.querySelector("#nav span.close");
-
 hamburgerMenuIcon.addEventListener("click", () => {
   ul.classList.add("openmenu");
 });
@@ -75,22 +86,51 @@ weatherIcon.addEventListener("click", () => {
   }
   weatherIcon.classList.toggle("iconrotate");
 });
+//
+//
+//
+let viewportSize;
+
+window.onresize = () => {
+  viewportSize = innerWidth;
+
+  if (viewportSize < 812) {
+    mobileViewClickHandler();
+  } else {
+    removeMobileClickHandlers();
+  }
+};
 
 // using Media Queries in js
 let x = window.matchMedia("(max-width: 812px)");
+
+x.addEventListener("change", () => {
+  clicking(x);
+});
+
 let itemWithSubmenu = document.querySelectorAll(
   "ul.menu > .item:has(.submenu)"
 );
+const submenuItems = [systemItem, mobileItem, softwareItem, graphicItem];
+
+console.log(itemWithSubmenu);
+console.log(systemItem);
+
 // opening and closing submenus
 function clicking(x) {
   if (x.matches) {
+    //we are in Mobile viewport
     let system = itemWithSubmenu[0].children[1];
     let mobile = itemWithSubmenu[1].children[1];
     let software = itemWithSubmenu[2].children[1];
     let graphic = itemWithSubmenu[3].children[1];
 
     //when system is clicked
-    itemWithSubmenu[0].addEventListener("click", firstListItemFunction);
+    systemItem.addEventListener("click", () => {
+      systemSubmenu.classList.toggle("postransform");
+      systemSubmenu.classList.toggle("childwhitecolor");
+      systemItem.classList.toggle("backcolor");
+    });
     function firstListItemFunction() {
       //open submenu of system with scaleY(1)
       system.classList.toggle("postransform");
@@ -247,10 +287,6 @@ function clicking(x) {
 
 //call function at run time
 clicking(x);
-
-x.addEventListener("change", () => {
-  clicking(x);
-});
 
 function checkTransition() {
   if (visualViewport.width > 810) {
