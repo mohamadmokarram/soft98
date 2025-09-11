@@ -1,29 +1,50 @@
+import { DATA } from "../Jsons/data.js";
+const expandListArrowButton = document.querySelector("ul.apps button span");
+const expandButton = document.querySelector(".continue");
+
+console.log(expandButton);
+
 let $ = selector => {
   return document.querySelector(selector);
 };
 
 const toTop = document.querySelector(".totop");
 window.addEventListener("scroll", () => {
-  if (window.scrollY > 900) {
+  if (scrollY > 900) {
     toTop.classList.add("active");
   } else {
     toTop.classList.remove("active");
   }
 });
-var btnSpan = document.querySelector("ul.apps button span");
-let continueButton = document.querySelector(".continue");
-if (continueButton) {
-  continueButton.onclick = function () {
-    let ultag = document.querySelector("ul.apps");
-    let styles = window.getComputedStyle(ultag);
+//
 
-    if (styles.maxHeight == "418px") {
-      ultag.classList.add("realheight");
-      btnSpan.innerHTML = "expand_less";
+//if we are in index.html file that has expandButton:
+if (expandButton) {
+  let appsMenuIsOpen = false;
+  //when clicks
+  expandButton.onclick = function () {
+    const initialHeight = "418px";
+    let appsList = document.querySelector("ul.apps");
+
+    if (!appsMenuIsOpen) {
+      appsList.style["max-height"] = `${appsList.scrollHeight}px`;
+      expandListArrowButton.innerHTML = "expand_less";
+      appsMenuIsOpen = !appsMenuIsOpen;
     } else {
-      ultag.classList.remove("realheight");
-      btnSpan.innerHTML = "expand_more";
+      appsList.style["max-height"] = initialHeight;
+      expandListArrowButton.innerHTML = "expand_more";
+      appsMenuIsOpen = !appsMenuIsOpen;
     }
+
+    // let styles = window.getComputedStyle(ultag);
+
+    // if (styles.maxHeight == "418px") {
+    //   ultag.classList.add("realheight");
+    //   expandListArrowButton.innerHTML = "expand_less";
+    // } else {
+    //   ultag.classList.remove("realheight");
+    //   expandListArrowButton.innerHTML = "expand_more";
+    // }
   };
 }
 let menuIcon = document.querySelector("#nav span.menusign");
@@ -178,6 +199,10 @@ function clicking(x) {
       }
     }
 
+    // function checkListItemClasses(listItem, classNames=["postransform",]) {
+    //   if (listItem.classList)
+    // }
+
     //closing submenus if main menu window get closed
     document.querySelector("#nav span.close").addEventListener("click", () => {
       if (
@@ -217,7 +242,7 @@ function clicking(x) {
         itemWithSubmenu[3].children[0].classList.remove("childwhitecolor");
       }
     });
-  } else {
+  } else if (false) {
     itemWithSubmenu[0].removeEventListener("click", firstListItemFunction);
     itemWithSubmenu[1].removeEventListener("click", secondListItemFunction);
     itemWithSubmenu[2].removeEventListener("click", thirdListItemFunction);
