@@ -207,55 +207,21 @@ weatherIcon.addEventListener("click", () => {
 
 //============================================================================
 
-//content    filtering
+//collecting post info & content filtering
 
 //============================================================================
-function postInfoCollector(element) {
-  return {
-    title: element.firstElementChild.firstElementChild.innerText,
-    category:
-      element.children[1].firstElementChild.children[3].children[1].innerText,
-    description: element.children[2].children[1].innerText,
-    // imageaddress: element.children[2].children[0].firstElementChild.getAttribute('src')
-    imageaddress: element.children[2].children[0].firstElementChild.src,
-  };
-}
-
-let mainContentPosts = document.querySelectorAll(".main-content .post");
-
-let arrayOfPostObjects = [];
-mainContentPosts.forEach(element => {
-  arrayOfPostObjects.push(postInfoCollector(element));
-});
-
-// let jsonFile = JSON.stringify(arrayOfPostObjects);
-
-//request for getting json file:
-let requestForJson = new XMLHttpRequest();
-//Get json file:
-requestForJson.open("GET", "/Jsons/postinfo.json");
-
-let jsonFile;
-
-//when you got it, it's saved in responseText property
-requestForJson.onload = function () {
-  //here we can store json file in a variable for turning it to an object
-  //but we just here logged it to the console:
-  jsonFile = requestForJson.responseText;
-};
-requestForJson.send();
 
 //filtering original array based on condition:
-let filteredResult;
-function filterArray(arrayOfobj, condition) {
-  if (condition === "انتخاب") {
-    creatPosts(arrayOfPostObjects);
+let filteredData;
+function filterArray(category) {
+  if (category === "انتخاب") {
+    creatPosts(DATA);
   } else {
-    filteredResult = arrayOfobj.filter(obj => {
-      return obj.category === condition;
+    filteredData = DATA.filter(post => {
+      return post.category === category;
     });
     //here filteredResult should send to a function to creat posts from that;
-    creatPosts(filteredResult);
+    creatPosts(filteredData);
   }
 }
 
@@ -263,9 +229,9 @@ function filterArray(arrayOfobj, condition) {
 let selectTag = $("select");
 selectTag.addEventListener("change", getCategory);
 function getCategory(e) {
-  let condition = e.target.value;
+  let category = e.target.value;
 
-  filterArray(arrayOfPostObjects, condition);
+  filterArray(category);
 }
 
 //Rendering filtered posts :
@@ -338,32 +304,17 @@ searchInput.addEventListener("input", () => {
   if (filteredData.length > 0) {
     creatPostFromSearched(filteredData);
   } else {
-    $(".main-content").innerHTML = "برنامه مورد نظر یافت نشد";
+    $(
+      ".main-content"
+    ).innerHTML = `<p style="text-align: center;margin-top: 50px;">برنامه مورد نظر یافت نشد</p>`;
   }
 
   // searchMyWord(arrayOfPostObjects, InputValue);
 });
-// function searchMyWord(array, word) {
-//   for (item of array) {
-//     let includedTLC = (item.title + item.category + item.description)
-//       .toLowerCase()
-//       .includes(word.toLowerCase());
-//     let includedTUC = (item.title + item.category + item.description)
-//       .toUpperCase()
-//       .includes(word.toUpperCase());
-//     if (includedTLC) {
-//       creatPostFromSearched([item]);
-//       continue;
-//     }
-//     if (word === "") {
-//       creatPosts(arrayOfPostObjects);
-//     }
-//   }
-// }
 
-function creatPostFromSearched(item) {
+function creatPostFromSearched(data) {
   let row = "";
-  item.forEach(obj => {
+  data.forEach(obj => {
     row += `
       <div class="post">
             <h3>
@@ -445,6 +396,10 @@ document.querySelector("div.ads").addEventListener("mouseenter", () => {
 document.querySelector("div.ads").addEventListener("mouseleave", () => {
   adverIteration.start();
 });
+
+window.onload = () => {
+  creatPostFromSearched(DATA);
+};
 
 //======================================================================
 //        onload message
