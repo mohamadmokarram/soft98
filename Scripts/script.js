@@ -207,11 +207,10 @@ weatherIcon.addEventListener("click", () => {
 
 //============================================================================
 
-//collecting post info & content filtering
+//filtering based on selected category
 
 //============================================================================
 
-//filtering original array based on condition:
 let filteredData;
 function filterArray(category) {
   if (category === "انتخاب") {
@@ -302,7 +301,7 @@ searchInput.addEventListener("input", () => {
       post.category.toLowerCase().includes(InputValue)
   );
   if (filteredData.length > 0) {
-    creatPostFromSearched(filteredData);
+    creatPosts(filteredData);
   } else {
     $(
       ".main-content"
@@ -311,55 +310,6 @@ searchInput.addEventListener("input", () => {
 
   // searchMyWord(arrayOfPostObjects, InputValue);
 });
-
-function creatPostFromSearched(data) {
-  let row = "";
-  data.forEach(obj => {
-    row += `
-      <div class="post">
-            <h3>
-              <a href="#">${obj.title}</a>
-            </h3>
-            <div class="post-spans">
-              <div class="row">
-                <div class="fl-right">
-                  <i class="fa fa-user" aria-hidden="true"></i>
-                  <span>salar</span>
-                </div>
-                <div class="fl-right">
-                  <i class="fa fa-eye" aria-hidden="true"></i>
-                  <span>۳,۰۷۱,۷۵۴ </span>
-                </div>
-                <div class="fl-right">
-                  <i class="fa fa-calendar-check-o" aria-hidden="true"></i>
-                  <span>۱۷ آذر ۱۴۰۲</span>
-                </div>
-                <div class="fl-right">
-                  <i class="fa fa-folder-o" aria-hidden="true"></i>
-                  <a href="#">${obj.category}</a>
-                </div>
-              </div>
-            </div>
-            <div class="description">
-              <div class="img-box">
-                <img
-                  src=${obj.imageaddress}
-                  alt="microsoft edge"
-                />
-              </div>
-              <div class="text">
-                <p>
-                   ${obj.description}
-                </p>
-              </div>
-            </div>
-            <a href="#">ادامه مطلب</a>
-          </div>
-          <hr>
-      `;
-  });
-  $(".main-content").innerHTML += row;
-}
 
 //==========================================================================
 //                              setInterval for advers
@@ -398,7 +348,7 @@ document.querySelector("div.ads").addEventListener("mouseleave", () => {
 });
 
 window.onload = () => {
-  creatPostFromSearched(DATA);
+  creatPosts(DATA);
 };
 
 //======================================================================
