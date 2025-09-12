@@ -14,13 +14,14 @@ const softwareItem = document.querySelector(".software-item");
 const softwareSubmenu = softwareItem.querySelector(".submenu");
 const graphicItem = document.querySelector(".graphic-item");
 const graphicSubmenu = graphicItem.querySelector(".submenu");
+const mobileCloseButton = document.querySelector("#nav span.close");
 
 let $ = selector => {
   return document.querySelector(selector);
 };
 
 const toggleClasses = (element, ...classNames) => {
-  classNames.forEach(clas => element.classList.toggle(clas));
+  classNames.forEach(className => element.classList.toggle(className));
 };
 
 const toTop = document.querySelector(".totop");
@@ -108,13 +109,15 @@ x.addEventListener("change", () => {
   clicking(x);
 });
 
-let itemWithSubmenu = document.querySelectorAll(
-  "ul.menu > .item:has(.submenu)"
-);
 const mobileListItems = [systemItem, mobileItem, softwareItem, graphicItem];
 
-console.log(itemWithSubmenu);
-console.log(systemItem);
+function closeSubmenuHandler() {
+  const openItem = document.querySelector(".postransform.childwhitecolor");
+  if (openItem) {
+    openItem.classList.remove("postransform", "childwhitecolor");
+    openItem.parentElement.classList.remove("backcolor");
+  }
+}
 
 // opening and closing submenus
 function clicking(x) {
@@ -129,63 +132,11 @@ function clicking(x) {
         listItem.classList.toggle("backcolor");
       });
 
-      const openItem = document.querySelector(".postransform.childwhitecolor");
-      if (openItem) {
-        openItem.classList.remove("postransform", "childwhitecolor");
-        openItem.parentElement.classList.remove("backcolor");
-      }
+      closeSubmenuHandler();
     });
-
-    //when system is clicked
-
-    // function checkListItemClasses(listItem, classNames=["postransform",]) {
-    //   if (listItem.classList)
-    // }
 
     //closing submenus if main menu window get closed
-    document.querySelector("#nav span.close").addEventListener("click", () => {
-      if (
-        system.classList.contains("postransform") &&
-        itemWithSubmenu[0].classList.contains("backcolor") &&
-        itemWithSubmenu[0].children[0].classList.contains("childwhitecolor")
-      ) {
-        system.classList.remove("postransform");
-        itemWithSubmenu[0].classList.remove("backcolor");
-        itemWithSubmenu[0].children[0].classList.remove("childwhitecolor");
-      }
-      if (
-        mobile.classList.contains("postransform") &&
-        itemWithSubmenu[1].classList.contains("backcolor") &&
-        itemWithSubmenu[1].children[0].classList.contains("childwhitecolor")
-      ) {
-        mobile.classList.remove("postransform");
-        itemWithSubmenu[1].classList.remove("backcolor");
-        itemWithSubmenu[1].children[0].classList.remove("childwhitecolor");
-      }
-      if (
-        software.classList.contains("postransform") &&
-        itemWithSubmenu[2].classList.contains("backcolor") &&
-        itemWithSubmenu[2].children[0].classList.contains("childwhitecolor")
-      ) {
-        software.classList.remove("postransform");
-        itemWithSubmenu[2].classList.remove("backcolor");
-        itemWithSubmenu[2].children[0].classList.remove("childwhitecolor");
-      }
-      if (
-        graphic.classList.contains("postransform") &&
-        itemWithSubmenu[3].classList.contains("backcolor") &&
-        itemWithSubmenu[3].children[0].classList.contains("childwhitecolor")
-      ) {
-        graphic.classList.remove("postransform");
-        itemWithSubmenu[3].classList.remove("backcolor");
-        itemWithSubmenu[3].children[0].classList.remove("childwhitecolor");
-      }
-    });
-  } else if (false) {
-    itemWithSubmenu[0].removeEventListener("click", firstListItemFunction);
-    itemWithSubmenu[1].removeEventListener("click", secondListItemFunction);
-    itemWithSubmenu[2].removeEventListener("click", thirdListItemFunction);
-    itemWithSubmenu[3].removeEventListener("click", fourthListItemFunction);
+    mobileCloseButton.addEventListener("click", closeSubmenuHandler);
   }
 }
 
