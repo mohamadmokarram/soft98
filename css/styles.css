@@ -223,11 +223,24 @@ hr {
   position: relative;
 }
 .main-content .post {
+  display: flex;
+  flex-direction: column;
   background-color: #f7f7f7;
   /* max-width: 800px; */
   margin: 10px auto;
   border-radius: 3px;
   overflow: auto;
+
+  > a {
+    align-self: start;
+    color: white;
+    background-color: var(--green-btn);
+    display: inline-block;
+    text-align: center;
+    margin: 10px;
+    padding: 5px 13px;
+    border-radius: 4px;
+  }
 }
 .main-content .post h3 {
   padding: 10px 0;
@@ -277,15 +290,7 @@ hr {
   padding: 10px;
   font-size: 13px;
 }
-.main-content .post > a {
-  color: white;
-  background-color: var(--green-btn);
-  display: inline-block;
-  text-align: center;
-  margin: 10px;
-  padding: 5px 13px;
-  border-radius: 4px;
-}
+
 .main-content .post > a:hover {
   background-color: #68923e;
 }
