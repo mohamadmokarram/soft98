@@ -16,6 +16,8 @@ const graphicItem = document.querySelector(".graphic-item");
 const graphicSubmenu = graphicItem.querySelector(".submenu");
 const mobileCloseButton = document.querySelector("#nav span.close");
 
+const mobileListItems = [systemItem, mobileItem, softwareItem, graphicItem];
+
 let $ = selector => {
   return document.querySelector(selector);
 };
@@ -87,29 +89,19 @@ weatherIcon.addEventListener("click", () => {
   }
   weatherIcon.classList.toggle("iconrotate");
 });
-//
-//
-//
-let viewportSize;
 
+window.onload = () => {
+  if (innerWidth < 812) {
+    mobileViewClickHandler();
+  }
+};
 window.onresize = () => {
-  viewportSize = innerWidth;
-
-  if (viewportSize < 812) {
+  if (innerWidth < 812) {
     mobileViewClickHandler();
   } else {
     removeMobileClickHandlers();
   }
 };
-
-// using Media Queries in js
-let x = window.matchMedia("(max-width: 812px)");
-
-x.addEventListener("change", () => {
-  clicking(x);
-});
-
-const mobileListItems = [systemItem, mobileItem, softwareItem, graphicItem];
 
 function closeSubmenuHandler() {
   const openItem = document.querySelector(".postransform.childwhitecolor");
@@ -119,29 +111,39 @@ function closeSubmenuHandler() {
   }
 }
 
-// opening and closing submenus
-function clicking(x) {
-  if (x.matches) {
-    //we are in Mobile viewport
-    mobileListItems.forEach(listItem => {
-      listItem.addEventListener("click", e => {
-        const submenuItem = listItem.querySelector(".submenu");
-        //first closing open item
+function mobileViewClickHandler() {
+  mobileListItems.forEach(listItem =>
+    listItem.addEventListener(
+      "click",
+      mobileListItemClickHandler.bind(listItem)
+    )
+  );
+  //closing submenus if main menu window get closed
+  mobileCloseButton.addEventListener("click", closeSubmenuHandler);
+}
 
-        toggleClasses(submenuItem, "postransform", "childwhitecolor");
-        listItem.classList.toggle("backcolor");
-      });
+function mobileListItemClickHandler() {
+  const submenuItem = this.querySelector(".submenu");
+  const wasOpen =
+    submenuItem.classList.contains("postransform") &&
+    submenuItem.classList.contains("childwhitecolor");
 
-      closeSubmenuHandler();
-    });
+  closeSubmenuHandler();
 
-    //closing submenus if main menu window get closed
-    mobileCloseButton.addEventListener("click", closeSubmenuHandler);
+  if (!wasOpen) {
+    toggleClasses(submenuItem, "postransform", "childwhitecolor");
+    this.classList.toggle("backcolor");
   }
 }
 
-//call function at run time
-clicking(x);
+function removeMobileClickHandlers() {
+  mobileListItems.forEach(listItem =>
+    listItem.removeEventListener(
+      "click",
+      mobileListItemClickHandler.bind(listItem)
+    )
+  );
+}
 
 function checkTransition() {
   if (visualViewport.width > 810) {
