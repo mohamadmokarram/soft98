@@ -11,6 +11,7 @@ const mobileItem = document.querySelector(".mobile-item");
 const softwareItem = document.querySelector(".software-item");
 const graphicItem = document.querySelector(".graphic-item");
 const mobileCloseButton = document.querySelector("#nav span.close");
+const adverBox = document.querySelector("div.ads");
 
 const mobileListItems = [systemItem, mobileItem, softwareItem, graphicItem];
 
@@ -153,7 +154,6 @@ if (visualViewport.width > 810) {
 }
 
 window.addEventListener("resize", () => {
-  clicking(x);
   checkTransition();
 });
 
@@ -226,7 +226,9 @@ function filterArray(category) {
 
 //getting output from select tag:
 let selectTag = $("select");
-selectTag.addEventListener("change", getCategory);
+if (selectTag) {
+  selectTag.addEventListener("change", getCategory);
+}
 function getCategory(e) {
   let category = e.target.value;
 
@@ -280,7 +282,9 @@ function creatPosts(filteredArray) {
           <hr>
       `;
   });
-  $(".main-content").innerHTML = row;
+  if ($(".main-content")) {
+    $(".main-content").innerHTML = row;
+  }
 }
 //=================================================================
 //Search Input
@@ -291,25 +295,27 @@ let searchInput = $('input[type="search"]');
 let InputValue = "";
 
 //onInput event
-searchInput.addEventListener("input", () => {
-  InputValue = searchInput.value.toLowerCase();
-  $(".main-content").innerHTML = ""; //when we add letter to search, we dont want to concat(+) to innerHTML
-  const filteredData = DATA.filter(
-    post =>
-      (post.title.toLowerCase().includes(InputValue) &&
-        post.description.toLowerCase().includes(InputValue)) ||
-      post.category.toLowerCase().includes(InputValue)
-  );
-  if (filteredData.length > 0) {
-    creatPosts(filteredData);
-  } else {
-    $(
-      ".main-content"
-    ).innerHTML = `<p style="text-align: center;margin-top: 50px;">برنامه مورد نظر یافت نشد</p>`;
-  }
+if (searchInput) {
+  searchInput.addEventListener("input", () => {
+    InputValue = searchInput.value.toLowerCase();
+    $(".main-content").innerHTML = ""; //when we add letter to search, we dont want to concat(+) to innerHTML
+    const filteredData = DATA.filter(
+      post =>
+        (post.title.toLowerCase().includes(InputValue) &&
+          post.description.toLowerCase().includes(InputValue)) ||
+        post.category.toLowerCase().includes(InputValue)
+    );
+    if (filteredData.length > 0) {
+      creatPosts(filteredData);
+    } else {
+      $(
+        ".main-content"
+      ).innerHTML = `<p style="text-align: center;margin-top: 50px;">برنامه مورد نظر یافت نشد</p>`;
+    }
 
-  // searchMyWord(arrayOfPostObjects, InputValue);
-});
+    // searchMyWord(arrayOfPostObjects, InputValue);
+  });
+}
 
 //==========================================================================
 //                              setInterval for advers
@@ -339,13 +345,14 @@ function movingAdvers() {
 let adverIteration = movingAdvers();
 adverIteration.start();
 
-document.querySelector("div.ads").addEventListener("mouseenter", () => {
-  adverIteration.stop();
-});
-
-document.querySelector("div.ads").addEventListener("mouseleave", () => {
-  adverIteration.start();
-});
+if (adverBox) {
+  adverBox.addEventListener("mouseenter", () => {
+    adverIteration.stop();
+  });
+  adverBox.addEventListener("mouseleave", () => {
+    adverIteration.start();
+  });
+}
 
 window.onload = () => {
   creatPosts(DATA);
