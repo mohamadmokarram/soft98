@@ -1,23 +1,23 @@
 import { DATA } from "../Jsons/data.js";
-const expandListArrowButton = document.querySelector("ul.apps button span");
-const expandButton = document.querySelector(".continue");
-const logo = document.querySelector(".logo img");
-const weatherIcon = document.querySelector(".moon-icon>i");
-const ul = document.querySelector("#nav ul.menu");
-const hamburgerMenuIcon = document.querySelector("#nav span.menusign");
-const hamburgerCloseIcon = document.querySelector("#nav span.close");
-const systemItem = document.querySelector(".system-item");
-const mobileItem = document.querySelector(".mobile-item");
-const softwareItem = document.querySelector(".software-item");
-const graphicItem = document.querySelector(".graphic-item");
-const mobileCloseButton = document.querySelector("#nav span.close");
-const adverBox = document.querySelector("div.ads");
-
-const mobileListItems = [systemItem, mobileItem, softwareItem, graphicItem];
-
 let $ = selector => {
   return document.querySelector(selector);
 };
+
+const expandListArrowButton = $("ul.apps button span");
+const expandButton = $(".continue");
+const logo = $(".logo img");
+const weatherIcon = $(".moon-icon>i");
+const ul = $("#nav ul.menu");
+const hamburgerMenuIcon = $("#nav span.menusign");
+const hamburgerCloseIcon = $("#nav span.close");
+const systemItem = $(".system-item");
+const mobileItem = $(".mobile-item");
+const softwareItem = $(".software-item");
+const graphicItem = $(".graphic-item");
+const mobileCloseButton = $("#nav span.close");
+const adverBox = $("div.ads");
+
+const mobileListItems = [systemItem, mobileItem, softwareItem, graphicItem];
 
 const toggleClasses = (element, ...classNames) => {
   classNames.forEach(className => element.classList.toggle(className));
@@ -312,11 +312,8 @@ if (searchInput) {
         ".main-content"
       ).innerHTML = `<p style="text-align: center;margin-top: 50px;">برنامه مورد نظر یافت نشد</p>`;
     }
-
-    // searchMyWord(arrayOfPostObjects, InputValue);
   });
 }
-
 //==========================================================================
 //                              setInterval for advers
 //==========================================================================
