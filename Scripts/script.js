@@ -7,13 +7,9 @@ const ul = document.querySelector("#nav ul.menu");
 const hamburgerMenuIcon = document.querySelector("#nav span.menusign");
 const hamburgerCloseIcon = document.querySelector("#nav span.close");
 const systemItem = document.querySelector(".system-item");
-const systemSubmenu = systemItem.querySelector(".submenu");
 const mobileItem = document.querySelector(".mobile-item");
-const mobileSubmenu = mobileItem.querySelector(".submenu");
 const softwareItem = document.querySelector(".software-item");
-const softwareSubmenu = softwareItem.querySelector(".submenu");
 const graphicItem = document.querySelector(".graphic-item");
-const graphicSubmenu = graphicItem.querySelector(".submenu");
 const mobileCloseButton = document.querySelector("#nav span.close");
 
 const mobileListItems = [systemItem, mobileItem, softwareItem, graphicItem];
@@ -166,7 +162,7 @@ if (screen.width < 811) {
   lastul.classList.remove("col-3");
 }
 //===========================================================================
-//changing lists by clicking titles and changing backgrounds colors in dark and light theme
+//software and android content change
 //============================================================================
 let androidButton = document.querySelector("h3.android");
 let softwareIcon = document.querySelector(".pc-icon");
@@ -272,7 +268,7 @@ function getCategory(e) {
   filterArray(arrayOfPostObjects, condition);
 }
 
-//creat post elements function :
+//Rendering filtered posts :
 function creatPosts(filteredArray) {
   let row = "";
   filteredArray.forEach(obj => {
@@ -335,9 +331,9 @@ searchInput.addEventListener("input", () => {
   $(".main-content").innerHTML = ""; //when we add letter to search, we dont want to concat(+) to innerHTML
   const filteredData = arrayOfPostObjects.filter(
     post =>
-      post.title.toLowerCase().includes(InputValue) ||
-      post.category.toLowerCase().includes(InputValue) ||
-      post.description.toLowerCase().includes(InputValue)
+      (post.title.toLowerCase().includes(InputValue) &&
+        post.description.toLowerCase().includes(InputValue)) ||
+      post.category.toLowerCase().includes(InputValue)
   );
   if (filteredData.length > 0) {
     creatPostFromSearched(filteredData);

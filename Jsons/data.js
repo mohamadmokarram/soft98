@@ -132,3 +132,5 @@ export const DATA = [
     imageaddress: "images/posts/Malwarebytes Anti-Exploit.png",
   },
 ];
+
+console.log(DATA.length);
