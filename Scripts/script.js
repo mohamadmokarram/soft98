@@ -295,7 +295,7 @@ let InputValue = "";
 searchInput.addEventListener("input", () => {
   InputValue = searchInput.value.toLowerCase();
   $(".main-content").innerHTML = ""; //when we add letter to search, we dont want to concat(+) to innerHTML
-  const filteredData = arrayOfPostObjects.filter(
+  const filteredData = DATA.filter(
     post =>
       (post.title.toLowerCase().includes(InputValue) &&
         post.description.toLowerCase().includes(InputValue)) ||
