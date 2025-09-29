@@ -131,3 +131,8 @@ figure#profile {
   }
 }
 
+@media (max-width: 575px) {
+  .profile-container {
+    display: none;
+  }
+}
