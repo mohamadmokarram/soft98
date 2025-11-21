@@ -16,7 +16,7 @@
 
 - Created - 2024-02-27
 
-- Technologies Used - Html , css , js , bootstrap
+- Technologies Used - Html , css , TypeScript , bootstrap
 
 - Role - Frontend
 
