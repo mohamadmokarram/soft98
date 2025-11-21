@@ -1,0 +1,23 @@
+{
+  "name": "soft98",
+  "version": "1.0.0",
+  "description": "**این پروژه بازطراحی از سایت سافت۹۸ بوده. استفاده از مطالب و فایل‌های تارنمای سافت ٩٨ به هر نحو، تنها با کسب اجازه کتبی از مدیریت امکانپذیر می‌باشد. 🙏🏻**",
+  "main": "utils.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mohamadmokarram/soft98.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mohamadmokarram/soft98/issues"
+  },
+  "homepage": "https://github.com/mohamadmokarram/soft98#readme",
+  "devDependencies": {
+    "typescript": "^5.9.3"
+  }
+}
